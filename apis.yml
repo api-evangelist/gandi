@@ -7,8 +7,8 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Domains
   - DNS
+  - Domains
 created: '2025-02-09'
 modified: '2026-03-16'
 url: >-
@@ -21,8 +21,8 @@ apis:
       General Documentation for Gandis Public API.
     humanURL: https://api.gandi.net/docs/reference/
     tags:
-      - Domains
       - DNS
+      - Domains
     properties:
       - type: Documentation
         url: https://api.gandi.net/docs/reference/
