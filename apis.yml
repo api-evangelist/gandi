@@ -1,6 +1,7 @@
 aid: gandi
 name: Gandi
-description: General Documentation for Gandis Public API
+description: >-
+  General Documentation for Gandis Public API.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -16,7 +17,8 @@ specificationVersion: '0.19'
 apis:
   - aid: gandi:gandi
     name: Gandi
-    description: General Documentation for Gandis Public API
+    description: >-
+      General Documentation for Gandis Public API.
     humanURL: https://api.gandi.net/docs/reference/
     tags:
       - Domains
