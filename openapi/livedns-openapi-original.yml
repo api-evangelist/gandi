@@ -1,0 +1,444 @@
+openapi: 3.0.3
+info:
+  title: Gandi LiveDNS API
+  description: >-
+    The Gandi LiveDNS API provides DNS management capabilities for domains
+    managed by Gandi, including DNS record management, DNSSEC, zone transfers,
+    and TSIG key management.
+  version: '5.0'
+  contact:
+    name: Gandi Support
+    url: https://www.gandi.net/
+  license:
+    name: Proprietary
+servers:
+  - url: https://api.gandi.net/v5/livedns
+    description: Production
+  - url: https://api.sandbox.gandi.net/v5/livedns
+    description: Sandbox
+tags:
+  - name: Domains
+    description: Manage domains in LiveDNS.
+  - name: Records
+    description: Manage DNS records for a domain.
+  - name: DNSSEC
+    description: Manage DNSSEC keys for a domain.
+  - name: TSIG
+    description: Manage TSIG keys for zone transfers.
+  - name: Zone Transfers
+    description: Manage AXFR zone transfer settings.
+  - name: Utilities
+    description: Utility endpoints for record types.
+paths:
+  /domains:
+    get:
+      summary: List domains
+      description: Returns the list of domains managed in LiveDNS.
+      tags:
+        - Domains
+      responses:
+        '200':
+          description: A list of domains.
+    post:
+      summary: Add a domain
+      description: Add a new domain to LiveDNS.
+      tags:
+        - Domains
+      responses:
+        '201':
+          description: Domain created.
+  /domains/{fqdn}:
+    get:
+      summary: Get domain
+      description: Retrieve the properties of a domain.
+      tags:
+        - Domains
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Domain properties.
+    patch:
+      summary: Update domain
+      description: Update the properties of a domain.
+      tags:
+        - Domains
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Domain updated.
+  /domains/{fqdn}/nameservers:
+    get:
+      summary: Get nameservers
+      description: Retrieve the nameservers for a domain.
+      tags:
+        - Domains
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Nameservers list.
+  /domains/{fqdn}/records:
+    get:
+      summary: List DNS records
+      description: List all DNS records for a domain.
+      tags:
+        - Records
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of DNS records.
+    post:
+      summary: Create DNS record
+      description: Create a new DNS record for a domain.
+      tags:
+        - Records
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Record created.
+    put:
+      summary: Replace DNS records
+      description: Replace all DNS records for a domain.
+      tags:
+        - Records
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Records replaced.
+    delete:
+      summary: Delete all DNS records
+      description: Delete all DNS records for a domain.
+      tags:
+        - Records
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Records deleted.
+  /domains/{fqdn}/records/{rrset_name}:
+    get:
+      summary: Get records by name
+      description: Retrieve DNS records matching a specific record name.
+      tags:
+        - Records
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: rrset_name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Matching records.
+  /domains/{fqdn}/keys:
+    get:
+      summary: List DNSSEC keys
+      description: List DNSSEC keys for the domain.
+      tags:
+        - DNSSEC
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of DNSSEC keys.
+    post:
+      summary: Create DNSSEC key
+      description: Create a new DNSSEC key for the domain.
+      tags:
+        - DNSSEC
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Key created.
+  /domains/{fqdn}/keys/{id}:
+    get:
+      summary: Get DNSSEC key
+      description: Retrieve a specific DNSSEC key.
+      tags:
+        - DNSSEC
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: DNSSEC key details.
+    patch:
+      summary: Update DNSSEC key
+      description: Update a DNSSEC key.
+      tags:
+        - DNSSEC
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Key updated.
+    delete:
+      summary: Delete DNSSEC key
+      description: Delete a DNSSEC key.
+      tags:
+        - DNSSEC
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Key deleted.
+  /axfr/tsig:
+    get:
+      summary: List TSIG keys
+      description: List TSIG keys.
+      tags:
+        - TSIG
+      responses:
+        '200':
+          description: List of TSIG keys.
+    post:
+      summary: Create TSIG key
+      description: Create a new TSIG key.
+      tags:
+        - TSIG
+      responses:
+        '201':
+          description: TSIG key created.
+  /axfr/tsig/{id}:
+    get:
+      summary: Get TSIG key
+      description: Retrieve a specific TSIG key.
+      tags:
+        - TSIG
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: TSIG key details.
+  /axfr/tsig/{id}/config/{software}:
+    get:
+      summary: Get TSIG config
+      description: Retrieve the configuration for a TSIG key for specific DNS software (BIND, Knot, NSD, PowerDNS).
+      tags:
+        - TSIG
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: software
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [bind, knot, nsd, powerdns]
+      responses:
+        '200':
+          description: Configuration snippet.
+  /domains/{fqdn}/axfr/slaves/{ip}:
+    get:
+      summary: Get slave server
+      description: Retrieve a slave server configuration.
+      tags:
+        - Zone Transfers
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ip
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Slave server info.
+    put:
+      summary: Add slave server
+      description: Add a slave server for zone transfers.
+      tags:
+        - Zone Transfers
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ip
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Slave added.
+    delete:
+      summary: Delete slave server
+      description: Remove a slave server.
+      tags:
+        - Zone Transfers
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ip
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Slave removed.
+  /domains/{fqdn}/axfr/tsig/{id}:
+    get:
+      summary: Get TSIG zone transfer
+      description: Retrieve a TSIG association for zone transfers.
+      tags:
+        - Zone Transfers
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: TSIG association info.
+    put:
+      summary: Add TSIG zone transfer
+      description: Associate a TSIG key with a domain for zone transfers.
+      tags:
+        - Zone Transfers
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: TSIG associated.
+    delete:
+      summary: Delete TSIG zone transfer
+      description: Remove a TSIG association from a domain.
+      tags:
+        - Zone Transfers
+      parameters:
+        - name: fqdn
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Association removed.
+  /dns/rrtypes:
+    get:
+      summary: List record types
+      description: List all accepted DNS record types.
+      tags:
+        - Utilities
+      responses:
+        '200':
+          description: List of supported DNS record types.
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Use the format `Apikey YOUR_API_KEY`.
+security:
+  - apiKey: []
