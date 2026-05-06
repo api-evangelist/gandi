@@ -1,0 +1,491 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gandi Domain API
+  description: The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.
+  tags:
+  - Gandi
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: gandi
+    baseUri: https://api.gandi.net/v5/domain
+    description: Gandi Domain API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{GANDI_TOKEN}}'
+    resources:
+    - name: check
+      path: /check
+      operations:
+      - name: get-check
+        method: GET
+        description: Check domain availability
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains
+      path: /domains
+      operations:
+      - name: get-domains
+        method: GET
+        description: List domains
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post-domains
+        method: POST
+        description: Register domain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains-domain
+      path: /domains/{domain}
+      operations:
+      - name: get-domains-domain
+        method: GET
+        description: Get domain
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-domains-domain
+        method: DELETE
+        description: Delete domain
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains-domain-authinfo
+      path: /domains/{domain}/authinfo
+      operations:
+      - name: put-domains-domain-authinfo
+        method: PUT
+        description: Reset auth code
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains-domain-autorenew
+      path: /domains/{domain}/autorenew
+      operations:
+      - name: patch-domains-domain-autorenew
+        method: PATCH
+        description: Update autorenew
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: domains-domain-claims
+      path: /domains/{domain}/claims
+      operations:
+      - name: get-domains-domain-claims
+        method: GET
+        description: Get trademark claims
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: changeowner-domain
+      path: /changeowner/{domain}
+      operations:
+      - name: post-changeowner-domain
+        method: POST
+        description: Initiate ownership change
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-changeowner-domain
+        method: GET
+        description: Get ownership change status
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: changeowner-domain-foa
+      path: /changeowner/{domain}/foa
+      operations:
+      - name: post-changeowner-domain-foa
+        method: POST
+        description: Resend FOA
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: gandi-rest
+    description: REST adapter for Gandi Domain API.
+    resources:
+    - path: /check
+      name: get-check
+      operations:
+      - method: GET
+        name: get-check
+        description: Check domain availability
+        call: gandi.get-check
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains
+      name: get-domains
+      operations:
+      - method: GET
+        name: get-domains
+        description: List domains
+        call: gandi.get-domains
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains
+      name: post-domains
+      operations:
+      - method: POST
+        name: post-domains
+        description: Register domain
+        call: gandi.post-domains
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domain}
+      name: get-domains-domain
+      operations:
+      - method: GET
+        name: get-domains-domain
+        description: Get domain
+        call: gandi.get-domains-domain
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domain}
+      name: delete-domains-domain
+      operations:
+      - method: DELETE
+        name: delete-domains-domain
+        description: Delete domain
+        call: gandi.delete-domains-domain
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domain}/authinfo
+      name: put-domains-domain-authinfo
+      operations:
+      - method: PUT
+        name: put-domains-domain-authinfo
+        description: Reset auth code
+        call: gandi.put-domains-domain-authinfo
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domain}/autorenew
+      name: patch-domains-domain-autorenew
+      operations:
+      - method: PATCH
+        name: patch-domains-domain-autorenew
+        description: Update autorenew
+        call: gandi.patch-domains-domain-autorenew
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /domains/{domain}/claims
+      name: get-domains-domain-claims
+      operations:
+      - method: GET
+        name: get-domains-domain-claims
+        description: Get trademark claims
+        call: gandi.get-domains-domain-claims
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /changeowner/{domain}
+      name: post-changeowner-domain
+      operations:
+      - method: POST
+        name: post-changeowner-domain
+        description: Initiate ownership change
+        call: gandi.post-changeowner-domain
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /changeowner/{domain}
+      name: get-changeowner-domain
+      operations:
+      - method: GET
+        name: get-changeowner-domain
+        description: Get ownership change status
+        call: gandi.get-changeowner-domain
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /changeowner/{domain}/foa
+      name: post-changeowner-domain-foa
+      operations:
+      - method: POST
+        name: post-changeowner-domain-foa
+        description: Resend FOA
+        call: gandi.post-changeowner-domain-foa
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: gandi-mcp
+    transport: http
+    description: MCP adapter for Gandi Domain API for AI agent use.
+    tools:
+    - name: get-check
+      description: Check domain availability
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gandi.get-check
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: name
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-domains
+      description: List domains
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gandi.get-domains
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-domains
+      description: Register domain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: gandi.post-domains
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-domains-domain
+      description: Get domain
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gandi.get-domains-domain
+      with:
+        domain: tools.domain
+      inputParameters:
+      - name: domain
+        type: string
+        description: domain
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-domains-domain
+      description: Delete domain
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: gandi.delete-domains-domain
+      with:
+        domain: tools.domain
+      inputParameters:
+      - name: domain
+        type: string
+        description: domain
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-domains-domain-authinfo
+      description: Reset auth code
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: gandi.put-domains-domain-authinfo
+      with:
+        domain: tools.domain
+      inputParameters:
+      - name: domain
+        type: string
+        description: domain
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-domains-domain-autorenew
+      description: Update autorenew
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: gandi.patch-domains-domain-autorenew
+      with:
+        domain: tools.domain
+      inputParameters:
+      - name: domain
+        type: string
+        description: domain
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-domains-domain-claims
+      description: Get trademark claims
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gandi.get-domains-domain-claims
+      with:
+        domain: tools.domain
+      inputParameters:
+      - name: domain
+        type: string
+        description: domain
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-changeowner-domain
+      description: Initiate ownership change
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: gandi.post-changeowner-domain
+      with:
+        domain: tools.domain
+      inputParameters:
+      - name: domain
+        type: string
+        description: domain
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-changeowner-domain
+      description: Get ownership change status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: gandi.get-changeowner-domain
+      with:
+        domain: tools.domain
+      inputParameters:
+      - name: domain
+        type: string
+        description: domain
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: post-changeowner-domain-foa
+      description: Resend FOA
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: gandi.post-changeowner-domain-foa
+      with:
+        domain: tools.domain
+      inputParameters:
+      - name: domain
+        type: string
+        description: domain
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    GANDI_TOKEN: GANDI_TOKEN
