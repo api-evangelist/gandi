@@ -1,0 +1,154 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gandi Domain API — Ownership
+  description: 'Gandi Domain API — Ownership. 3 operations. Lead operation: Initiate ownership change. Self-contained Naftiko
+    capability covering one Gandi business surface.'
+  tags:
+  - Gandi
+  - Ownership
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GANDI_API_KEY: GANDI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: domains-ownership
+    baseUri: https://api.gandi.net/v5/domain
+    description: Gandi Domain API — Ownership business capability. Self-contained, no shared references.
+    resources:
+    - name: changeowner-domain
+      path: /changeowner/{domain}
+      operations:
+      - name: post
+        method: POST
+        description: Initiate ownership change
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+      - name: get
+        method: GET
+        description: Get ownership change status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+    - name: changeowner-domain-foa
+      path: /changeowner/{domain}/foa
+      operations:
+      - name: post
+        method: POST
+        description: Resend FOA
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GANDI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: domains-ownership-rest
+    port: 8080
+    description: REST adapter for Gandi Domain API — Ownership. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/changeowner/{domain}
+      name: changeowner-domain
+      description: REST surface for changeowner-domain.
+      operations:
+      - method: POST
+        name: post
+        description: Initiate ownership change
+        call: domains-ownership.post
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get
+        description: Get ownership change status
+        call: domains-ownership.get
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/changeowner/{domain}/foa
+      name: changeowner-domain-foa
+      description: REST surface for changeowner-domain-foa.
+      operations:
+      - method: POST
+        name: post
+        description: Resend FOA
+        call: domains-ownership.post
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: domains-ownership-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gandi Domain API — Ownership. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: initiate-ownership-change
+      description: Initiate ownership change
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: domains-ownership.post
+      with:
+        domain: tools.domain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-ownership-change-status
+      description: Get ownership change status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: domains-ownership.get
+      with:
+        domain: tools.domain
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resend-foa
+      description: Resend FOA
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: domains-ownership.post
+      with:
+        domain: tools.domain
+      outputParameters:
+      - type: object
+        mapping: $.

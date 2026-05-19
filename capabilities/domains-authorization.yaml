@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gandi Domain API — Authorization
+  description: 'Gandi Domain API — Authorization. 1 operations. Lead operation: Reset auth code. Self-contained Naftiko capability
+    covering one Gandi business surface.'
+  tags:
+  - Gandi
+  - Authorization
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GANDI_API_KEY: GANDI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: domains-authorization
+    baseUri: https://api.gandi.net/v5/domain
+    description: Gandi Domain API — Authorization business capability. Self-contained, no shared references.
+    resources:
+    - name: domains-domain-authinfo
+      path: /domains/{domain}/authinfo
+      operations:
+      - name: put
+        method: PUT
+        description: Reset auth code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: domain
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GANDI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: domains-authorization-rest
+    port: 8080
+    description: REST adapter for Gandi Domain API — Authorization. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/domains/{domain}/authinfo
+      name: domains-domain-authinfo
+      description: REST surface for domains-domain-authinfo.
+      operations:
+      - method: PUT
+        name: put
+        description: Reset auth code
+        call: domains-authorization.put
+        with:
+          domain: rest.domain
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: domains-authorization-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gandi Domain API — Authorization. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: reset-auth-code
+      description: Reset auth code
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: domains-authorization.put
+      with:
+        domain: tools.domain
+      outputParameters:
+      - type: object
+        mapping: $.

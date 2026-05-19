@@ -1,0 +1,242 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gandi LiveDNS API — DNSSEC
+  description: 'Gandi LiveDNS API — DNSSEC. 5 operations. Lead operation: List DNSSEC keys. Self-contained Naftiko capability
+    covering one Gandi business surface.'
+  tags:
+  - Gandi
+  - DNSSEC
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GANDI_API_KEY: GANDI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: livedns-dnssec
+    baseUri: https://api.gandi.net/v5/livedns
+    description: Gandi LiveDNS API — DNSSEC business capability. Self-contained, no shared references.
+    resources:
+    - name: domains-fqdn-keys
+      path: /domains/{fqdn}/keys
+      operations:
+      - name: get
+        method: GET
+        description: List DNSSEC keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+      - name: post
+        method: POST
+        description: Create DNSSEC key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+    - name: domains-fqdn-keys-id
+      path: /domains/{fqdn}/keys/{id}
+      operations:
+      - name: get
+        method: GET
+        description: Get DNSSEC key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: patch
+        method: PATCH
+        description: Update DNSSEC key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: delete
+        method: DELETE
+        description: Delete DNSSEC key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.GANDI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: livedns-dnssec-rest
+    port: 8080
+    description: REST adapter for Gandi LiveDNS API — DNSSEC. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/domains/{fqdn}/keys
+      name: domains-fqdn-keys
+      description: REST surface for domains-fqdn-keys.
+      operations:
+      - method: GET
+        name: get
+        description: List DNSSEC keys
+        call: livedns-dnssec.get
+        with:
+          fqdn: rest.fqdn
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: post
+        description: Create DNSSEC key
+        call: livedns-dnssec.post
+        with:
+          fqdn: rest.fqdn
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/domains/{fqdn}/keys/{id}
+      name: domains-fqdn-keys-id
+      description: REST surface for domains-fqdn-keys-id.
+      operations:
+      - method: GET
+        name: get
+        description: Get DNSSEC key
+        call: livedns-dnssec.get
+        with:
+          fqdn: rest.fqdn
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patch
+        description: Update DNSSEC key
+        call: livedns-dnssec.patch
+        with:
+          fqdn: rest.fqdn
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete DNSSEC key
+        call: livedns-dnssec.delete
+        with:
+          fqdn: rest.fqdn
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: livedns-dnssec-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gandi LiveDNS API — DNSSEC. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-dnssec-keys
+      description: List DNSSEC keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: livedns-dnssec.get
+      with:
+        fqdn: tools.fqdn
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-dnssec-key
+      description: Create DNSSEC key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: livedns-dnssec.post
+      with:
+        fqdn: tools.fqdn
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dnssec-key
+      description: Get DNSSEC key
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: livedns-dnssec.get
+      with:
+        fqdn: tools.fqdn
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-dnssec-key
+      description: Update DNSSEC key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: livedns-dnssec.patch
+      with:
+        fqdn: tools.fqdn
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-dnssec-key
+      description: Delete DNSSEC key
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: livedns-dnssec.delete
+      with:
+        fqdn: tools.fqdn
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

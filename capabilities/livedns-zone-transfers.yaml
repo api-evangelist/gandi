@@ -1,0 +1,294 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gandi LiveDNS API — Zone Transfers
+  description: 'Gandi LiveDNS API — Zone Transfers. 6 operations. Lead operation: Get slave server. Self-contained Naftiko
+    capability covering one Gandi business surface.'
+  tags:
+  - Gandi
+  - Zone Transfers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GANDI_API_KEY: GANDI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: livedns-zone-transfers
+    baseUri: https://api.gandi.net/v5/livedns
+    description: Gandi LiveDNS API — Zone Transfers business capability. Self-contained, no shared references.
+    resources:
+    - name: domains-fqdn-axfr-slaves-ip
+      path: /domains/{fqdn}/axfr/slaves/{ip}
+      operations:
+      - name: get
+        method: GET
+        description: Get slave server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+        - name: ip
+          in: path
+          type: string
+          required: true
+      - name: put
+        method: PUT
+        description: Add slave server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+        - name: ip
+          in: path
+          type: string
+          required: true
+      - name: delete
+        method: DELETE
+        description: Delete slave server
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+        - name: ip
+          in: path
+          type: string
+          required: true
+    - name: domains-fqdn-axfr-tsig-id
+      path: /domains/{fqdn}/axfr/tsig/{id}
+      operations:
+      - name: get
+        method: GET
+        description: Get TSIG zone transfer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: put
+        method: PUT
+        description: Add TSIG zone transfer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: delete
+        method: DELETE
+        description: Delete TSIG zone transfer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.GANDI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: livedns-zone-transfers-rest
+    port: 8080
+    description: REST adapter for Gandi LiveDNS API — Zone Transfers. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/domains/{fqdn}/axfr/slaves/{ip}
+      name: domains-fqdn-axfr-slaves-ip
+      description: REST surface for domains-fqdn-axfr-slaves-ip.
+      operations:
+      - method: GET
+        name: get
+        description: Get slave server
+        call: livedns-zone-transfers.get
+        with:
+          fqdn: rest.fqdn
+          ip: rest.ip
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: put
+        description: Add slave server
+        call: livedns-zone-transfers.put
+        with:
+          fqdn: rest.fqdn
+          ip: rest.ip
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete slave server
+        call: livedns-zone-transfers.delete
+        with:
+          fqdn: rest.fqdn
+          ip: rest.ip
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/domains/{fqdn}/axfr/tsig/{id}
+      name: domains-fqdn-axfr-tsig-id
+      description: REST surface for domains-fqdn-axfr-tsig-id.
+      operations:
+      - method: GET
+        name: get
+        description: Get TSIG zone transfer
+        call: livedns-zone-transfers.get
+        with:
+          fqdn: rest.fqdn
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: put
+        description: Add TSIG zone transfer
+        call: livedns-zone-transfers.put
+        with:
+          fqdn: rest.fqdn
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete TSIG zone transfer
+        call: livedns-zone-transfers.delete
+        with:
+          fqdn: rest.fqdn
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: livedns-zone-transfers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gandi LiveDNS API — Zone Transfers. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-slave-server
+      description: Get slave server
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: livedns-zone-transfers.get
+      with:
+        fqdn: tools.fqdn
+        ip: tools.ip
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-slave-server
+      description: Add slave server
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: livedns-zone-transfers.put
+      with:
+        fqdn: tools.fqdn
+        ip: tools.ip
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-slave-server
+      description: Delete slave server
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: livedns-zone-transfers.delete
+      with:
+        fqdn: tools.fqdn
+        ip: tools.ip
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tsig-zone-transfer
+      description: Get TSIG zone transfer
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: livedns-zone-transfers.get
+      with:
+        fqdn: tools.fqdn
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-tsig-zone-transfer
+      description: Add TSIG zone transfer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: livedns-zone-transfers.put
+      with:
+        fqdn: tools.fqdn
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-tsig-zone-transfer
+      description: Delete TSIG zone transfer
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: livedns-zone-transfers.delete
+      with:
+        fqdn: tools.fqdn
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

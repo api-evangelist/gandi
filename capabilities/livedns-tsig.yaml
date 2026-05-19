@@ -1,0 +1,185 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Gandi LiveDNS API — TSIG
+  description: 'Gandi LiveDNS API — TSIG. 4 operations. Lead operation: List TSIG keys. Self-contained Naftiko capability
+    covering one Gandi business surface.'
+  tags:
+  - Gandi
+  - TSIG
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GANDI_API_KEY: GANDI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: livedns-tsig
+    baseUri: https://api.gandi.net/v5/livedns
+    description: Gandi LiveDNS API — TSIG business capability. Self-contained, no shared references.
+    resources:
+    - name: axfr-tsig
+      path: /axfr/tsig
+      operations:
+      - name: get
+        method: GET
+        description: List TSIG keys
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: post
+        method: POST
+        description: Create TSIG key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: axfr-tsig-id
+      path: /axfr/tsig/{id}
+      operations:
+      - name: get
+        method: GET
+        description: Get TSIG key
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: axfr-tsig-id-config-software
+      path: /axfr/tsig/{id}/config/{software}
+      operations:
+      - name: get
+        method: GET
+        description: Get TSIG config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: software
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.GANDI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: livedns-tsig-rest
+    port: 8080
+    description: REST adapter for Gandi LiveDNS API — TSIG. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/axfr/tsig
+      name: axfr-tsig
+      description: REST surface for axfr-tsig.
+      operations:
+      - method: GET
+        name: get
+        description: List TSIG keys
+        call: livedns-tsig.get
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: post
+        description: Create TSIG key
+        call: livedns-tsig.post
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/axfr/tsig/{id}
+      name: axfr-tsig-id
+      description: REST surface for axfr-tsig-id.
+      operations:
+      - method: GET
+        name: get
+        description: Get TSIG key
+        call: livedns-tsig.get
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/axfr/tsig/{id}/config/{software}
+      name: axfr-tsig-id-config-software
+      description: REST surface for axfr-tsig-id-config-software.
+      operations:
+      - method: GET
+        name: get
+        description: Get TSIG config
+        call: livedns-tsig.get
+        with:
+          id: rest.id
+          software: rest.software
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: livedns-tsig-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Gandi LiveDNS API — TSIG. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-tsig-keys
+      description: List TSIG keys
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: livedns-tsig.get
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-tsig-key
+      description: Create TSIG key
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: livedns-tsig.post
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tsig-key
+      description: Get TSIG key
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: livedns-tsig.get
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tsig-config
+      description: Get TSIG config
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: livedns-tsig.get
+      with:
+        id: tools.id
+        software: tools.software
+      outputParameters:
+      - type: object
+        mapping: $.
