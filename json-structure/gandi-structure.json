@@ -1,0 +1,245 @@
+{
+  "provider": "Gandi",
+  "providerId": "gandi",
+  "kind": "json-structure",
+  "description": "Structural overview of the Gandi API surface; extracted from openapi/.",
+  "schemaCount": 0,
+  "operationCount": 26,
+  "schemas": [],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/domains",
+      "operationId": null,
+      "summary": "List domains",
+      "tags": [
+        "Domains"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/domains",
+      "operationId": null,
+      "summary": "Add a domain",
+      "tags": [
+        "Domains"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/domains/{fqdn}",
+      "operationId": null,
+      "summary": "Get domain",
+      "tags": [
+        "Domains"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/domains/{fqdn}",
+      "operationId": null,
+      "summary": "Update domain",
+      "tags": [
+        "Domains"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/domains/{fqdn}/nameservers",
+      "operationId": null,
+      "summary": "Get nameservers",
+      "tags": [
+        "Domains"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/domains/{fqdn}/records",
+      "operationId": null,
+      "summary": "List DNS records",
+      "tags": [
+        "Records"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/domains/{fqdn}/records",
+      "operationId": null,
+      "summary": "Create DNS record",
+      "tags": [
+        "Records"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/domains/{fqdn}/records",
+      "operationId": null,
+      "summary": "Replace DNS records",
+      "tags": [
+        "Records"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/domains/{fqdn}/records",
+      "operationId": null,
+      "summary": "Delete all DNS records",
+      "tags": [
+        "Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/domains/{fqdn}/records/{rrset_name}",
+      "operationId": null,
+      "summary": "Get records by name",
+      "tags": [
+        "Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/domains/{fqdn}/keys",
+      "operationId": null,
+      "summary": "List DNSSEC keys",
+      "tags": [
+        "DNSSEC"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/domains/{fqdn}/keys",
+      "operationId": null,
+      "summary": "Create DNSSEC key",
+      "tags": [
+        "DNSSEC"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/domains/{fqdn}/keys/{id}",
+      "operationId": null,
+      "summary": "Get DNSSEC key",
+      "tags": [
+        "DNSSEC"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/domains/{fqdn}/keys/{id}",
+      "operationId": null,
+      "summary": "Delete DNSSEC key",
+      "tags": [
+        "DNSSEC"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/domains/{fqdn}/keys/{id}",
+      "operationId": null,
+      "summary": "Update DNSSEC key",
+      "tags": [
+        "DNSSEC"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/axfr/tsig",
+      "operationId": null,
+      "summary": "List TSIG keys",
+      "tags": [
+        "TSIG"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/axfr/tsig",
+      "operationId": null,
+      "summary": "Create TSIG key",
+      "tags": [
+        "TSIG"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/axfr/tsig/{id}",
+      "operationId": null,
+      "summary": "Get TSIG key",
+      "tags": [
+        "TSIG"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/axfr/tsig/{id}/config/{software}",
+      "operationId": null,
+      "summary": "Get TSIG config",
+      "tags": [
+        "TSIG"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/domains/{fqdn}/axfr/slaves/{ip}",
+      "operationId": null,
+      "summary": "Get slave server",
+      "tags": [
+        "Zone Transfers"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/domains/{fqdn}/axfr/slaves/{ip}",
+      "operationId": null,
+      "summary": "Add slave server",
+      "tags": [
+        "Zone Transfers"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/domains/{fqdn}/axfr/slaves/{ip}",
+      "operationId": null,
+      "summary": "Delete slave server",
+      "tags": [
+        "Zone Transfers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/domains/{fqdn}/axfr/tsig/{id}",
+      "operationId": null,
+      "summary": "Get TSIG zone transfer",
+      "tags": [
+        "Zone Transfers"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/domains/{fqdn}/axfr/tsig/{id}",
+      "operationId": null,
+      "summary": "Add TSIG zone transfer",
+      "tags": [
+        "Zone Transfers"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/domains/{fqdn}/axfr/tsig/{id}",
+      "operationId": null,
+      "summary": "Delete TSIG zone transfer",
+      "tags": [
+        "Zone Transfers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dns/rrtypes",
+      "operationId": null,
+      "summary": "List record types",
+      "tags": [
+        "Utilities"
+      ]
+    }
+  ]
+}

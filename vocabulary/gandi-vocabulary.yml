@@ -1,0 +1,17 @@
+name: Gandi Domain Vocabulary
+provider: Gandi
+providerId: gandi
+description: Tag-derived vocabulary for the Gandi API surface; sourced from openapi/ tags.
+terms:
+- term: Domains
+  description: Manage domains in LiveDNS.
+- term: Records
+  description: Manage DNS records for a domain.
+- term: DNSSEC
+  description: Manage DNSSEC keys for a domain.
+- term: TSIG
+  description: Manage TSIG keys for zone transfers.
+- term: Zone Transfers
+  description: Manage AXFR zone transfer settings.
+- term: Utilities
+  description: Utility endpoints for record types.
