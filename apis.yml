@@ -31,17 +31,17 @@ apis:
       url: https://api.gandi.net/docs/domains/
     - type: OpenAPI
       url: https://raw.githubusercontent.com/api-evangelist/gandi/refs/heads/main/openapi/domains-openapi-original.yml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/domains-authorization.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/domains-availability.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/domains-domains.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/domains-ownership.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/domains-renewal.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/domains-trademark.yaml
   - aid: gandi:livedns
     name: Gandi LiveDNS API
@@ -57,17 +57,17 @@ apis:
       url: https://api.gandi.net/docs/livedns/
     - type: OpenAPI
       url: https://raw.githubusercontent.com/api-evangelist/gandi/refs/heads/main/openapi/livedns-openapi-original.yml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/livedns-dnssec.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/livedns-domains.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/livedns-records.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/livedns-tsig.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/livedns-utilities.yaml
-    - type: NaftikoCapability
+    - type: X-NaftikoCapability
       url: capabilities/livedns-zone-transfers.yaml
   - aid: gandi:certificate
     name: Gandi Certificate API
