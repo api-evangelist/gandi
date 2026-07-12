@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/domains-openapi-original.yml, openapi/livedns-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: bearer
+  type: http
+  scheme: bearer
+  description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
+  sources:
+  - openapi/domains-openapi-original.yml
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Deprecated API key - format `Apikey YOUR_API_KEY`.
+  sources:
+  - openapi/domains-openapi-original.yml
+  - openapi/livedns-openapi-original.yml

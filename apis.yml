@@ -127,6 +127,12 @@ apis:
     - type: Documentation
       url: https://api.gandi.net/docs/gandicloud/
 common:
+  - type: VulnerabilityDisclosure
+    url: security/gandi-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/gandi-domain-security.yml
+  - type: Authentication
+    url: authentication/gandi-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/Gandi
   - type: LinkedIn
@@ -137,6 +143,8 @@ common:
     url: https://api.gandi.net/docs/reference/
   - type: Sandbox
     url: https://api.sandbox.gandi.net/docs/
+  - url: https://news.gandi.net/en/feed
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
