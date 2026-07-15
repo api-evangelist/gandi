@@ -127,6 +127,8 @@ apis:
     - type: Documentation
       url: https://api.gandi.net/docs/gandicloud/
 common:
+  - type: AgenticAccess
+    url: agentic-access/gandi-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/gandi-vulnerability-disclosure.yml
   - type: DomainSecurity
