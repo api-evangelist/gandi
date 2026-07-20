@@ -11,7 +11,7 @@ schemes:
 - name: bearer
   type: http
   scheme: bearer
-  description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
+  description: Personal Access Token (PAT) - format `Bearer [example key]`.
   sources:
   - openapi/domains-openapi-original.yml
 - name: apiKey
