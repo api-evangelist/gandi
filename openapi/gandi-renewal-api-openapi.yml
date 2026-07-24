@@ -1,0 +1,48 @@
+openapi: 3.0.3
+info:
+  title: Gandi Domain Authorization Renewal API
+  description: The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.
+  version: '5.0'
+  contact:
+    name: Gandi Support
+    url: https://www.gandi.net/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.gandi.net/v5/domain
+  description: Production
+- url: https://api.sandbox.gandi.net/v5/domain
+  description: Sandbox
+security:
+- bearer: []
+- apiKey: []
+tags:
+- name: Renewal
+  description: Manage automatic renewal.
+paths:
+  /domains/{domain}/autorenew:
+    patch:
+      summary: Update autorenew
+      description: Modify automatic renewal settings for a domain.
+      tags:
+      - Renewal
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Autorenew updated.
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Deprecated API key - format `Apikey YOUR_API_KEY`.

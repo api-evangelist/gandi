@@ -1,0 +1,90 @@
+openapi: 3.0.3
+info:
+  title: Gandi Domain Authorization TSIG API
+  description: The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.
+  version: '5.0'
+  contact:
+    name: Gandi Support
+    url: https://www.gandi.net/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.gandi.net/v5/domain
+  description: Production
+- url: https://api.sandbox.gandi.net/v5/domain
+  description: Sandbox
+security:
+- bearer: []
+- apiKey: []
+tags:
+- name: TSIG
+  description: Manage TSIG keys for zone transfers.
+paths:
+  /axfr/tsig:
+    get:
+      summary: List TSIG keys
+      description: List TSIG keys.
+      tags:
+      - TSIG
+      responses:
+        '200':
+          description: List of TSIG keys.
+    post:
+      summary: Create TSIG key
+      description: Create a new TSIG key.
+      tags:
+      - TSIG
+      responses:
+        '201':
+          description: TSIG key created.
+  /axfr/tsig/{id}:
+    get:
+      summary: Get TSIG key
+      description: Retrieve a specific TSIG key.
+      tags:
+      - TSIG
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: TSIG key details.
+  /axfr/tsig/{id}/config/{software}:
+    get:
+      summary: Get TSIG config
+      description: Retrieve the configuration for a TSIG key for specific DNS software (BIND, Knot, NSD, PowerDNS).
+      tags:
+      - TSIG
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: software
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - bind
+          - knot
+          - nsd
+          - powerdns
+      responses:
+        '200':
+          description: Configuration snippet.
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Deprecated API key - format `Apikey YOUR_API_KEY`.

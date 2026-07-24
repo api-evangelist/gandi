@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:
+  title: Gandi Domain Authorization DNSSEC API
+  description: The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.
+  version: '5.0'
+  contact:
+    name: Gandi Support
+    url: https://www.gandi.net/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.gandi.net/v5/domain
+  description: Production
+- url: https://api.sandbox.gandi.net/v5/domain
+  description: Sandbox
+security:
+- bearer: []
+- apiKey: []
+tags:
+- name: DNSSEC
+  description: Manage DNSSEC keys for a domain.
+paths:
+  /domains/{fqdn}/keys:
+    get:
+      summary: List DNSSEC keys
+      description: List DNSSEC keys for the domain.
+      tags:
+      - DNSSEC
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of DNSSEC keys.
+    post:
+      summary: Create DNSSEC key
+      description: Create a new DNSSEC key for the domain.
+      tags:
+      - DNSSEC
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Key created.
+  /domains/{fqdn}/keys/{id}:
+    get:
+      summary: Get DNSSEC key
+      description: Retrieve a specific DNSSEC key.
+      tags:
+      - DNSSEC
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: DNSSEC key details.
+    patch:
+      summary: Update DNSSEC key
+      description: Update a DNSSEC key.
+      tags:
+      - DNSSEC
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Key updated.
+    delete:
+      summary: Delete DNSSEC key
+      description: Delete a DNSSEC key.
+      tags:
+      - DNSSEC
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Key deleted.
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Deprecated API key - format `Apikey YOUR_API_KEY`.

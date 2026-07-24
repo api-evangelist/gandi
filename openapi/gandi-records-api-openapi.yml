@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Gandi Domain Authorization Records API
+  description: The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.
+  version: '5.0'
+  contact:
+    name: Gandi Support
+    url: https://www.gandi.net/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.gandi.net/v5/domain
+  description: Production
+- url: https://api.sandbox.gandi.net/v5/domain
+  description: Sandbox
+security:
+- bearer: []
+- apiKey: []
+tags:
+- name: Records
+  description: Manage DNS records for a domain.
+paths:
+  /domains/{fqdn}/records:
+    get:
+      summary: List DNS records
+      description: List all DNS records for a domain.
+      tags:
+      - Records
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of DNS records.
+    post:
+      summary: Create DNS record
+      description: Create a new DNS record for a domain.
+      tags:
+      - Records
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Record created.
+    put:
+      summary: Replace DNS records
+      description: Replace all DNS records for a domain.
+      tags:
+      - Records
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Records replaced.
+    delete:
+      summary: Delete all DNS records
+      description: Delete all DNS records for a domain.
+      tags:
+      - Records
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Records deleted.
+  /domains/{fqdn}/records/{rrset_name}:
+    get:
+      summary: Get records by name
+      description: Retrieve DNS records matching a specific record name.
+      tags:
+      - Records
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: rrset_name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Matching records.
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Deprecated API key - format `Apikey YOUR_API_KEY`.

@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: Gandi Domain Authorization Zone Transfers API
+  description: The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.
+  version: '5.0'
+  contact:
+    name: Gandi Support
+    url: https://www.gandi.net/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.gandi.net/v5/domain
+  description: Production
+- url: https://api.sandbox.gandi.net/v5/domain
+  description: Sandbox
+security:
+- bearer: []
+- apiKey: []
+tags:
+- name: Zone Transfers
+  description: Manage AXFR zone transfer settings.
+paths:
+  /domains/{fqdn}/axfr/slaves/{ip}:
+    get:
+      summary: Get slave server
+      description: Retrieve a slave server configuration.
+      tags:
+      - Zone Transfers
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ip
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Slave server info.
+    put:
+      summary: Add slave server
+      description: Add a slave server for zone transfers.
+      tags:
+      - Zone Transfers
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ip
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Slave added.
+    delete:
+      summary: Delete slave server
+      description: Remove a slave server.
+      tags:
+      - Zone Transfers
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ip
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Slave removed.
+  /domains/{fqdn}/axfr/tsig/{id}:
+    get:
+      summary: Get TSIG zone transfer
+      description: Retrieve a TSIG association for zone transfers.
+      tags:
+      - Zone Transfers
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: TSIG association info.
+    put:
+      summary: Add TSIG zone transfer
+      description: Associate a TSIG key with a domain for zone transfers.
+      tags:
+      - Zone Transfers
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: TSIG associated.
+    delete:
+      summary: Delete TSIG zone transfer
+      description: Remove a TSIG association from a domain.
+      tags:
+      - Zone Transfers
+      parameters:
+      - name: fqdn
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Association removed.
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Deprecated API key - format `Apikey YOUR_API_KEY`.

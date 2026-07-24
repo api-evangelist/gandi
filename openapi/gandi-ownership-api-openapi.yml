@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: Gandi Domain Authorization Ownership API
+  description: The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.
+  version: '5.0'
+  contact:
+    name: Gandi Support
+    url: https://www.gandi.net/
+  license:
+    name: Proprietary
+servers:
+- url: https://api.gandi.net/v5/domain
+  description: Production
+- url: https://api.sandbox.gandi.net/v5/domain
+  description: Sandbox
+security:
+- bearer: []
+- apiKey: []
+tags:
+- name: Ownership
+  description: Domain ownership changes.
+paths:
+  /changeowner/{domain}:
+    post:
+      summary: Initiate ownership change
+      description: Initiate a domain ownership transfer.
+      tags:
+      - Ownership
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: Change initiated.
+    get:
+      summary: Get ownership change status
+      description: Check the status of an ownership change.
+      tags:
+      - Ownership
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Status information.
+  /changeowner/{domain}/foa:
+    post:
+      summary: Resend FOA
+      description: Resend Form of Authorization emails for an ownership change.
+      tags:
+      - Ownership
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: FOA resent.
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Deprecated API key - format `Apikey YOUR_API_KEY`.
