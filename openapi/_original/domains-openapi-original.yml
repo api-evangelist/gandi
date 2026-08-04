@@ -1,0 +1,195 @@
+openapi: 3.0.3
+info:
+  title: Gandi Domain API
+  description: >-
+    The Gandi Domain API enables you to register, manage, transfer, and renew
+    domain names registered with Gandi.
+  version: '5.0'
+  contact:
+    name: Gandi Support
+    url: https://www.gandi.net/
+  license:
+    name: Proprietary
+servers:
+  - url: https://api.gandi.net/v5/domain
+    description: Production
+  - url: https://api.sandbox.gandi.net/v5/domain
+    description: Sandbox
+tags:
+  - name: Domains
+    description: Manage domains.
+  - name: Availability
+    description: Check domain name availability and pricing.
+  - name: Authorization
+    description: Manage domain authorization codes.
+  - name: Renewal
+    description: Manage automatic renewal.
+  - name: Trademark
+    description: Trademark claim information.
+  - name: Ownership
+    description: Domain ownership changes.
+paths:
+  /check:
+    get:
+      summary: Check domain availability
+      description: Check the availability and pricing of a domain name.
+      tags:
+        - Availability
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Availability and pricing info.
+  /domains:
+    get:
+      summary: List domains
+      description: List domains owned by the user.
+      tags:
+        - Domains
+      responses:
+        '200':
+          description: A list of domains.
+    post:
+      summary: Register domain
+      description: Register a new domain name.
+      tags:
+        - Domains
+      responses:
+        '202':
+          description: Registration accepted.
+  /domains/{domain}:
+    get:
+      summary: Get domain
+      description: Retrieve detailed information for a domain.
+      tags:
+        - Domains
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Domain details.
+    delete:
+      summary: Delete domain
+      description: Delete a domain name.
+      tags:
+        - Domains
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Deletion accepted.
+  /domains/{domain}/authinfo:
+    put:
+      summary: Reset auth code
+      description: Reset the registry authorization code for a domain.
+      tags:
+        - Authorization
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Auth code reset.
+  /domains/{domain}/autorenew:
+    patch:
+      summary: Update autorenew
+      description: Modify automatic renewal settings for a domain.
+      tags:
+        - Renewal
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Autorenew updated.
+  /domains/{domain}/claims:
+    get:
+      summary: Get trademark claims
+      description: Retrieve trademark claim information for a domain.
+      tags:
+        - Trademark
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Trademark claims.
+  /changeowner/{domain}:
+    post:
+      summary: Initiate ownership change
+      description: Initiate a domain ownership transfer.
+      tags:
+        - Ownership
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: Change initiated.
+    get:
+      summary: Get ownership change status
+      description: Check the status of an ownership change.
+      tags:
+        - Ownership
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Status information.
+  /changeowner/{domain}/foa:
+    post:
+      summary: Resend FOA
+      description: Resend Form of Authorization emails for an ownership change.
+      tags:
+        - Ownership
+      parameters:
+        - name: domain
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: FOA resent.
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+      description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Deprecated API key - format `Apikey YOUR_API_KEY`.
+security:
+  - bearer: []
+  - apiKey: []

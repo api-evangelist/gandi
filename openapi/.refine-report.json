@@ -1,0 +1,34 @@
+{
+  "provider": "gandi",
+  "sources": [
+    "gandi-authorization-api-openapi.yml",
+    "gandi-availability-api-openapi.yml",
+    "gandi-dnssec-api-openapi.yml",
+    "gandi-domains-api-openapi.yml",
+    "gandi-ownership-api-openapi.yml",
+    "gandi-records-api-openapi.yml",
+    "gandi-renewal-api-openapi.yml",
+    "gandi-trademark-api-openapi.yml",
+    "gandi-tsig-api-openapi.yml",
+    "gandi-utilities-api-openapi.yml",
+    "gandi-zone-transfers-api-openapi.yml"
+  ],
+  "outputs": [
+    "gandi-authorization-api-openapi.yml",
+    "gandi-availability-api-openapi.yml",
+    "gandi-dnssec-api-openapi.yml",
+    "gandi-domains-api-openapi.yml",
+    "gandi-ownership-api-openapi.yml",
+    "gandi-records-api-openapi.yml",
+    "gandi-renewal-api-openapi.yml",
+    "gandi-trademark-api-openapi.yml",
+    "gandi-tsig-api-openapi.yml",
+    "gandi-utilities-api-openapi.yml",
+    "gandi-zone-transfers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
