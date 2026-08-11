@@ -100,32 +100,8 @@ apis:
     url: openapi/gandi-authorization-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-availability-api
   name: Gandi Availability API
   description: Check domain name availability and pricing.
@@ -138,32 +114,8 @@ apis:
     url: openapi/gandi-availability-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-dnssec-api
   name: Gandi DNSSEC API
   description: Manage DNSSEC keys for a domain.
@@ -176,32 +128,8 @@ apis:
     url: openapi/gandi-dnssec-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-domains-api
   name: Gandi Domains API
   description: Manage domains.
@@ -214,32 +142,8 @@ apis:
     url: openapi/gandi-domains-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-ownership-api
   name: Gandi Ownership API
   description: Domain ownership changes.
@@ -252,32 +156,8 @@ apis:
     url: openapi/gandi-ownership-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-records-api
   name: Gandi Records API
   description: Manage DNS records for a domain.
@@ -290,32 +170,8 @@ apis:
     url: openapi/gandi-records-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-renewal-api
   name: Gandi Renewal API
   description: Manage automatic renewal.
@@ -328,32 +184,8 @@ apis:
     url: openapi/gandi-renewal-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-trademark-api
   name: Gandi Trademark API
   description: Trademark claim information.
@@ -366,32 +198,8 @@ apis:
     url: openapi/gandi-trademark-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-tsig-api
   name: Gandi TSIG API
   description: Manage TSIG keys for zone transfers.
@@ -404,32 +212,8 @@ apis:
     url: openapi/gandi-tsig-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-utilities-api
   name: Gandi Utilities API
   description: Utility endpoints for record types.
@@ -442,32 +226,8 @@ apis:
     url: openapi/gandi-utilities-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 - aid: gandi:gandi-zone-transfers-api
   name: Gandi Zone Transfers API
   description: Manage AXFR zone transfer settings.
@@ -480,32 +240,8 @@ apis:
     url: openapi/gandi-zone-transfers-api-openapi.yml
   - type: Documentation
     url: https://api.gandi.net/docs/domains/
-  - type: X-NaftikoCapability
-    url: capabilities/domains-authorization.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-availability.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-ownership.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-renewal.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/domains-trademark.yaml
   - type: Documentation
     url: https://api.gandi.net/docs/livedns/
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-dnssec.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-domains.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-records.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-tsig.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-utilities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/livedns-zone-transfers.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/gandi-agentic-access.yml
