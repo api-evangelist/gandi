@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gandi Domain Authorization Records API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List DNS records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/records",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List all DNS records for a domain."
+        },
+        {
+          "info": {
+            "name": "Create DNS record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/records",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a new DNS record for a domain."
+        },
+        {
+          "info": {
+            "name": "Replace DNS records",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/records",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Replace all DNS records for a domain."
+        },
+        {
+          "info": {
+            "name": "Delete all DNS records",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/records",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete all DNS records for a domain."
+        },
+        {
+          "info": {
+            "name": "Get records by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/records/:rrset_name",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rrset_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve DNS records matching a specific record name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

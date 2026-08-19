@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gandi Domain Authorization API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reset auth code",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gandi.net/v5/domain/domains/:domain/authinfo",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset the registry authorization code for a domain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

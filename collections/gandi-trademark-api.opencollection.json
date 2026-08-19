@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gandi Domain Authorization Trademark API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trademark",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get trademark claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:domain/claims",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve trademark claim information for a domain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gandi Domain Authorization TSIG API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TSIG",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List TSIG keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/axfr/tsig"
+          },
+          "docs": "List TSIG keys."
+        },
+        {
+          "info": {
+            "name": "Create TSIG key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gandi.net/v5/domain/axfr/tsig"
+          },
+          "docs": "Create a new TSIG key."
+        },
+        {
+          "info": {
+            "name": "Get TSIG key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/axfr/tsig/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific TSIG key."
+        },
+        {
+          "info": {
+            "name": "Get TSIG config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/axfr/tsig/:id/config/:software",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "software",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the configuration for a TSIG key for specific DNS software (BIND, Knot, NSD, PowerDNS)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

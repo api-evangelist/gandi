@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gandi Domain Authorization DNSSEC API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DNSSEC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List DNSSEC keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/keys",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List DNSSEC keys for the domain."
+        },
+        {
+          "info": {
+            "name": "Create DNSSEC key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/keys",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a new DNSSEC key for the domain."
+        },
+        {
+          "info": {
+            "name": "Get DNSSEC key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/keys/:id",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific DNSSEC key."
+        },
+        {
+          "info": {
+            "name": "Update DNSSEC key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/keys/:id",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a DNSSEC key."
+        },
+        {
+          "info": {
+            "name": "Delete DNSSEC key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/keys/:id",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a DNSSEC key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

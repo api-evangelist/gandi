@@ -1,0 +1,111 @@
+{
+  "item": [
+    {
+      "id": "d8cc4dab-819d-42d9-8192-10e25da69233",
+      "name": "Utilities",
+      "description": {
+        "content": "Utility endpoints for record types.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "905f1056-30ce-43da-864d-137b758b2344",
+          "name": "List record types",
+          "request": {
+            "name": "List record types",
+            "description": {
+              "content": "List all accepted DNS record types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "dns",
+                "rrtypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe92651a-df93-4eb2-81ad-96bb56e58f06",
+              "name": "List of supported DNS record types.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dns",
+                    "rrtypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gandi.net/v5/domain",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e28645e4-259d-4074-a16a-f0e3ff6e77a3",
+    "name": "Gandi Domain Authorization Utilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.\n\nContact Support:\n Name: Gandi Support",
+      "type": "text/plain"
+    }
+  }
+}

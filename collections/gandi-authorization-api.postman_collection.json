@@ -1,0 +1,129 @@
+{
+  "item": [
+    {
+      "id": "035fe632-a4bf-4a64-abed-65a0250ec481",
+      "name": "Authorization",
+      "description": {
+        "content": "Manage domain authorization codes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3aaa4c0e-239b-4fbc-8c52-e30de4fff766",
+          "name": "Reset auth code",
+          "request": {
+            "name": "Reset auth code",
+            "description": {
+              "content": "Reset the registry authorization code for a domain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "domains",
+                ":domain",
+                "authinfo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "domain",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a56906f-c8c9-4470-b298-bebac5f18c46",
+              "name": "Auth code reset.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "domains",
+                    ":domain",
+                    "authinfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "domain",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gandi.net/v5/domain",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b62f6c40-6df6-4125-9723-ad641bb281e6",
+    "name": "Gandi Domain Authorization API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.\n\nContact Support:\n Name: Gandi Support",
+      "type": "text/plain"
+    }
+  }
+}

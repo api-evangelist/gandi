@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gandi Domain Authorization Renewal API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Renewal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update autorenew",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.gandi.net/v5/domain/domains/:domain/autorenew",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Modify automatic renewal settings for a domain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

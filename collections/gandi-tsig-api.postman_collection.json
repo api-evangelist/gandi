@@ -1,0 +1,375 @@
+{
+  "item": [
+    {
+      "id": "dcad02c9-abcb-4bc3-9e94-c2b1b16dc06a",
+      "name": "TSIG",
+      "description": {
+        "content": "Manage TSIG keys for zone transfers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f65be1cd-9f1c-40c9-b539-cdf78ad2ebdc",
+          "name": "List TSIG keys",
+          "request": {
+            "name": "List TSIG keys",
+            "description": {
+              "content": "List TSIG keys.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "axfr",
+                "tsig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "413c6631-d24f-4f34-8ace-4759d83c965f",
+              "name": "List of TSIG keys.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "axfr",
+                    "tsig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70ce21a1-2ded-4936-9254-51d37ba40908",
+          "name": "Create TSIG key",
+          "request": {
+            "name": "Create TSIG key",
+            "description": {
+              "content": "Create a new TSIG key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "axfr",
+                "tsig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b47c6b00-94fd-4eee-bab8-d936de7f3b3e",
+              "name": "TSIG key created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "axfr",
+                    "tsig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ea9092c-8939-4f07-8289-8825c6790b60",
+          "name": "Get TSIG key",
+          "request": {
+            "name": "Get TSIG key",
+            "description": {
+              "content": "Retrieve a specific TSIG key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "axfr",
+                "tsig",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "142c2b5f-e7a1-463f-9016-5fc8d57b1d73",
+              "name": "TSIG key details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "axfr",
+                    "tsig",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c2f8449-332c-4307-a0cb-e6bc76f63b1d",
+          "name": "Get TSIG config",
+          "request": {
+            "name": "Get TSIG config",
+            "description": {
+              "content": "Retrieve the configuration for a TSIG key for specific DNS software (BIND, Knot, NSD, PowerDNS).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "axfr",
+                "tsig",
+                ":id",
+                "config",
+                ":software"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "software",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6d94493-0e1a-41a9-8323-c8e66042f44a",
+              "name": "Configuration snippet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "axfr",
+                    "tsig",
+                    ":id",
+                    "config",
+                    ":software"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "software",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gandi.net/v5/domain",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "62d5e444-4f3a-4cd4-9373-9ccd6a25779a",
+    "name": "Gandi Domain Authorization TSIG API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.\n\nContact Support:\n Name: Gandi Support",
+      "type": "text/plain"
+    }
+  }
+}

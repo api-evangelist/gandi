@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gandi Domain Authorization Zone Transfers API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Zone Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get slave server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/axfr/slaves/:ip",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ip",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a slave server configuration."
+        },
+        {
+          "info": {
+            "name": "Add slave server",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/axfr/slaves/:ip",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ip",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add a slave server for zone transfers."
+        },
+        {
+          "info": {
+            "name": "Delete slave server",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/axfr/slaves/:ip",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ip",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a slave server."
+        },
+        {
+          "info": {
+            "name": "Get TSIG zone transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/axfr/tsig/:id",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a TSIG association for zone transfers."
+        },
+        {
+          "info": {
+            "name": "Add TSIG zone transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/axfr/tsig/:id",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Associate a TSIG key with a domain for zone transfers."
+        },
+        {
+          "info": {
+            "name": "Delete TSIG zone transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/axfr/tsig/:id",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a TSIG association from a domain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

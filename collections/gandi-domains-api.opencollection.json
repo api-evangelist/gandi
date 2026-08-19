@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gandi Domain Authorization Domains API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Domains",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List domains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains"
+          },
+          "docs": "List domains owned by the user."
+        },
+        {
+          "info": {
+            "name": "Register domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gandi.net/v5/domain/domains"
+          },
+          "docs": "Register a new domain name."
+        },
+        {
+          "info": {
+            "name": "Get domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information for a domain."
+        },
+        {
+          "info": {
+            "name": "Delete domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gandi.net/v5/domain/domains/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a domain name."
+        },
+        {
+          "info": {
+            "name": "Get domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the properties of a domain."
+        },
+        {
+          "info": {
+            "name": "Update domain",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update the properties of a domain."
+        },
+        {
+          "info": {
+            "name": "Get nameservers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/domains/:fqdn/nameservers",
+            "params": [
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve the nameservers for a domain."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

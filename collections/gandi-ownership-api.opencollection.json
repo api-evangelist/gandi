@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gandi Domain Authorization Ownership API",
+    "version": "5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ownership",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get ownership change status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gandi.net/v5/domain/changeowner/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Check the status of an ownership change."
+        },
+        {
+          "info": {
+            "name": "Initiate ownership change",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gandi.net/v5/domain/changeowner/:domain",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Initiate a domain ownership transfer."
+        },
+        {
+          "info": {
+            "name": "Resend FOA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gandi.net/v5/domain/changeowner/:domain/foa",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resend Form of Authorization emails for an ownership change."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
