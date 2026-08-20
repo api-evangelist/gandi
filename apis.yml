@@ -65,6 +65,9 @@ apis:
   humanURL: https://api.gandi.net/docs/organization/
   tags:
   - Organization
+  - User
+  tags_raw:
+  - Organization
   - Users
   properties:
   - type: Documentation
