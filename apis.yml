@@ -207,6 +207,8 @@ apis:
   humanURL: https://api.gandi.net/docs/domains/
   baseURL: https://api.gandi.net/v5/domain
   tags:
+  - Trademarks
+  tags_raw:
   - Trademark
   properties:
   - type: OpenAPI
