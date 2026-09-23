@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Gandi Domain Authorization DNSSEC API
-  description: The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.
+  title: Gandi LiveDNS DNSSEC API
+  description: The Gandi LiveDNS API provides DNS management capabilities for domains managed by Gandi, including DNS record management, DNSSEC, zone transfers, and TSIG key management.
   version: '5.0'
   contact:
     name: Gandi Support
@@ -9,12 +9,11 @@ info:
   license:
     name: Proprietary
 servers:
-- url: https://api.gandi.net/v5/domain
+- url: https://api.gandi.net/v5/livedns
   description: Production
-- url: https://api.sandbox.gandi.net/v5/domain
+- url: https://api.sandbox.gandi.net/v5/livedns
   description: Sandbox
 security:
-- bearer: []
 - apiKey: []
 tags:
 - name: DNSSEC
@@ -35,6 +34,8 @@ paths:
       responses:
         '200':
           description: List of DNSSEC keys.
+      operationId: getDomainsByFqdnKeys
+      x-operation-id-source: derived
     post:
       summary: Create DNSSEC key
       description: Create a new DNSSEC key for the domain.
@@ -49,6 +50,8 @@ paths:
       responses:
         '201':
           description: Key created.
+      operationId: postDomainsByFqdnKeys
+      x-operation-id-source: derived
   /domains/{fqdn}/keys/{id}:
     get:
       summary: Get DNSSEC key
@@ -69,6 +72,8 @@ paths:
       responses:
         '200':
           description: DNSSEC key details.
+      operationId: getDomainsByFqdnKeysById
+      x-operation-id-source: derived
     patch:
       summary: Update DNSSEC key
       description: Update a DNSSEC key.
@@ -88,6 +93,8 @@ paths:
       responses:
         '200':
           description: Key updated.
+      operationId: patchDomainsByFqdnKeysById
+      x-operation-id-source: derived
     delete:
       summary: Delete DNSSEC key
       description: Delete a DNSSEC key.
@@ -107,14 +114,12 @@ paths:
       responses:
         '204':
           description: Key deleted.
+      operationId: deleteDomainsByFqdnKeysById
+      x-operation-id-source: derived
 components:
   securitySchemes:
-    bearer:
-      type: http
-      scheme: bearer
-      description: Personal Access Token (PAT) - format `Bearer pat_xxx`.
     apiKey:
       type: apiKey
       in: header
       name: Authorization
-      description: Deprecated API key - format `Apikey YOUR_API_KEY`.
+      description: Use the format `Apikey YOUR_API_KEY`.

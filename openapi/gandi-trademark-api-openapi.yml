@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Gandi Domain Authorization Trademark API
+  title: Gandi Domain Trademark API
   description: The Gandi Domain API enables you to register, manage, transfer, and renew domain names registered with Gandi.
   version: '5.0'
   contact:
@@ -35,6 +35,8 @@ paths:
       responses:
         '200':
           description: Trademark claims.
+      operationId: getDomainsByDomainClaims
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearer:

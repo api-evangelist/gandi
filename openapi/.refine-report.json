@@ -1,27 +1,18 @@
 {
   "provider": "gandi",
   "sources": [
-    "gandi-authorization-api-openapi.yml",
-    "gandi-availability-api-openapi.yml",
-    "gandi-dnssec-api-openapi.yml",
-    "gandi-domains-api-openapi.yml",
-    "gandi-ownership-api-openapi.yml",
-    "gandi-records-api-openapi.yml",
-    "gandi-renewal-api-openapi.yml",
-    "gandi-trademark-api-openapi.yml",
-    "gandi-tsig-api-openapi.yml",
-    "gandi-utilities-api-openapi.yml",
-    "gandi-zone-transfers-api-openapi.yml"
+    "_original/domains-openapi-original.yml",
+    "_original/livedns-openapi-original.yml"
   ],
   "outputs": [
     "gandi-authorization-api-openapi.yml",
     "gandi-availability-api-openapi.yml",
-    "gandi-dnssec-api-openapi.yml",
     "gandi-domains-api-openapi.yml",
     "gandi-ownership-api-openapi.yml",
-    "gandi-records-api-openapi.yml",
     "gandi-renewal-api-openapi.yml",
     "gandi-trademark-api-openapi.yml",
+    "gandi-dnssec-api-openapi.yml",
+    "gandi-records-api-openapi.yml",
     "gandi-tsig-api-openapi.yml",
     "gandi-utilities-api-openapi.yml",
     "gandi-zone-transfers-api-openapi.yml"
@@ -29,6 +20,24 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "domains-openapi-original.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "livedns-openapi-original.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'Domains' spans 2 source specs (domains-openapi-original.yml, livedns-openapi-original.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "gandi-authorization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-availability-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-dnssec-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-domains-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-ownership-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-records-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-renewal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-trademark-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-tsig-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-utilities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gandi-zone-transfers-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
