@@ -240,3 +240,28 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - object
+  plans:
+  - name: Domain Registration
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - object
+    periods:
+    - year
+  - name: Public API (LiveDNS / Domain / Billing)
+    access: freemium
+    model: subscription
+    model_how: derived
+    units:
+    - object
+    periods:
+    - month
